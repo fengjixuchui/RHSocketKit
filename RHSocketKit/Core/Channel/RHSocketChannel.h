@@ -33,9 +33,7 @@
  */
 @interface RHSocketChannel : RHSocketConnection
 <
-RHUpstreamBufferDelegate,
 RHSocketEncoderOutputProtocol,
-RHDownstreamBufferDelegate,
 RHSocketDecoderOutputProtocol
 >
 
@@ -60,8 +58,12 @@ RHSocketDecoderOutputProtocol
 - (void)addDelegate:(id<RHSocketChannelDelegate>)delegate;
 - (void)removeDelegate:(id<RHSocketChannelDelegate>)delegate;
 
+#pragma mark - connection
+
 - (void)openConnection;
 - (void)closeConnection;
+
+#pragma mark - send packet
 
 - (void)asyncSendPacket:(id<RHUpstreamPacket>)packet;
 /** 重连成功后，刷新发送缓存区 */
